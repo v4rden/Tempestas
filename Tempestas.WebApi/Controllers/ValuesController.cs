@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Tepestas.WebApi.Controllers
+namespace Tempestas.WebApi.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]

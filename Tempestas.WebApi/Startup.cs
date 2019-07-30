@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Tepestas.WebApi
+namespace Tempestas.WebApi
 {
     public class Startup
     {

@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>
-        <RootNamespace>Tepestas.WebApi</RootNamespace>
+        <RootNamespace>Tempestas.WebApi</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
