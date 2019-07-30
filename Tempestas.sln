@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tempestas.Application", "Te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E7E91394-396F-49DE-AA94-1DBF17241EF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tepestas.WebApi", "Tepestas.WebApi\Tepestas.WebApi.csproj", "{C4F0C7A8-E2C8-4F4B-BC97-C37E52CBD64C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tempestas.WebApi", "Tempestas.WebApi\Tempestas.WebApi.csproj", "{C4F0C7A8-E2C8-4F4B-BC97-C37E52CBD64C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
