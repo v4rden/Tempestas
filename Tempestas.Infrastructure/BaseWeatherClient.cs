@@ -1,6 +1,5 @@
 namespace Tempestas.Infrastructure
 {
-    using System;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -37,9 +36,6 @@ namespace Tempestas.Infrastructure
 
         protected abstract string GetRequestUrl(string city);
 
-        protected virtual async Task<CurrentWeatherInTownModel> Convert(string json)
-        {
-            throw new NotImplementedException();
-        }
+        protected abstract Task<CurrentWeatherInTownModel> Convert(string json);
     }
 }

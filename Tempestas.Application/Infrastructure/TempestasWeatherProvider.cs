@@ -10,10 +10,10 @@ namespace Tempestas.Application.Infrastructure
     {
         private readonly List<IWeatherClient> _clients;
 
-        public TempestasWeatherProvider(IWeatherClient todoClient)
+        public TempestasWeatherProvider(IEnumerable<IWeatherClient> clients)
         {
             _clients = new List<IWeatherClient>();
-            _clients.Add(todoClient);
+            _clients.AddRange(clients);
         }
 
         public async Task<CurrentWeatherInTownModel> GetWeatherAsync(GetWeatherMsg msg,

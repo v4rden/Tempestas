@@ -29,7 +29,10 @@
             services.AddOptions();
             services.AddMediatR(typeof(GetCurrentWeatherByCityNameHandler).GetTypeInfo().Assembly);
 
+            services.AddTransient<IWeatherClient, ApixuWeatherClient>();
             services.AddTransient<IWeatherClient, OpenWeatherMapClient>();
+            services.AddTransient<IWeatherClient, WeatherBitClient>();
+
             services.AddTransient<IWeatherProvider, TempestasWeatherProvider>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
