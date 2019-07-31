@@ -8,7 +8,7 @@ namespace Tempestas.Application.Weather
     public class GetCurrentWeatherByCityNameHandler :
         IRequestHandler<GetCurrentWeatherByCityName, CurrentWeatherInTownModel>
     {
-        private IWeatherProvider _weatherProvider;
+        private readonly IWeatherProvider _weatherProvider;
 
         public GetCurrentWeatherByCityNameHandler(IWeatherProvider weatherProvider)
         {

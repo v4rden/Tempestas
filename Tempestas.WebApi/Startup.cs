@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-
-namespace Tempestas.WebApi
+﻿namespace Tempestas.WebApi
 {
     using System.Reflection;
     using Application.Infrastructure;
@@ -19,6 +6,11 @@ namespace Tempestas.WebApi
     using Application.Weather;
     using Infrastructure;
     using MediatR;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
 
     public class Startup
     {
@@ -36,9 +28,9 @@ namespace Tempestas.WebApi
 
             services.AddTransient<IWeatherClient, ApixuWeatherClient>();
             services.AddTransient<IWeatherProvider, TempestasWeatherProvider>();
-            
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            
+
             services.AddSwaggerDocument();
         }
 
@@ -46,15 +38,11 @@ namespace Tempestas.WebApi
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
             else
-            {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
-            }
-            
+
             app.UseOpenApi();
             app.UseSwaggerUi3(options =>
                 {
@@ -64,18 +52,18 @@ namespace Tempestas.WebApi
                     // Define OpenAPI/Swagger document route (defined with UseSwaggerWithApiExplorer)
                     options.DocumentPath = "/swagger/v1/swagger.json";
                 }
-                );
-            
+            );
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseHttpsRedirection();
             app.UseMvc(routes =>
-                        {
-                            routes.MapRoute(
-                                name: "default",
-                                template: "{controller}/{action=Index}/{id?}");
-                        });
+            {
+                routes.MapRoute(
+                    "default",
+                    "{controller}/{action=Index}/{id?}");
+            });
         }
     }
 }

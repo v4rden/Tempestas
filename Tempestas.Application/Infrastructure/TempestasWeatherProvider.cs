@@ -21,10 +21,7 @@ namespace Tempestas.Application.Infrastructure
         {
             var work = new List<Task<CurrentWeatherInTownModel>>();
 
-            foreach (var weatherClient in _clients)
-            {
-                work.Add(weatherClient.GetWeatherAsync(msg, cancellationToken));
-            }
+            foreach (var weatherClient in _clients) work.Add(weatherClient.GetWeatherAsync(msg, cancellationToken));
 
             var result = await Task.WhenAny(work).Result;
             return result;

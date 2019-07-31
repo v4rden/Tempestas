@@ -16,23 +16,16 @@ namespace Tempestas.Infrastructure
         {
             using (var client = new HttpClient())
             {
-                try
-                {
-                    var requestUrl = $"{ApiUrl}{msg.CityName}{ApiKey}";
-                    var response =
-                        client.GetAsync(requestUrl,
-                            cancellationToken).Result;
-                    var data = response.Content.ReadAsStringAsync().Result;
-                    return Convert(data);
-                }
-                catch (Exception e)
-                {
-                    throw;
-                }
+                var requestUrl = $"{ApiUrl}{msg.CityName}{ApiKey}";
+                var response =
+                    client.GetAsync(requestUrl,
+                        cancellationToken).Result;
+                var data = response.Content.ReadAsStringAsync().Result;
+                return Convert(data);
             }
         }
 
-        protected async virtual Task<CurrentWeatherInTownModel> Convert(string json)
+        protected virtual async Task<CurrentWeatherInTownModel> Convert(string json)
         {
             throw new NotImplementedException();
         }
