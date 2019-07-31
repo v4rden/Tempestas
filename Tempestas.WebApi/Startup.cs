@@ -28,7 +28,7 @@
             services.Configure<ApiKeys>(Configuration.GetSection("ApiKeys"));
             services.AddOptions();
             services.AddMediatR(typeof(GetCurrentWeatherByCityNameHandler).GetTypeInfo().Assembly);
-
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
             services.AddTransient<IWeatherClient, ApixuWeatherClient>();
             services.AddTransient<IWeatherClient, OpenWeatherMapClient>();
             services.AddTransient<IWeatherClient, WeatherBitClient>();
