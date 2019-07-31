@@ -14,7 +14,10 @@ using Microsoft.Extensions.Options;
 namespace Tempestas.WebApi
 {
     using System.Reflection;
+    using Application.Infrastructure;
+    using Application.Interfaces;
     using Application.Weather;
+    using Infrastructure;
     using MediatR;
 
     public class Startup
@@ -30,7 +33,13 @@ namespace Tempestas.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMediatR(typeof(GetCurrentWeatherByCityNameHandler).GetTypeInfo().Assembly);
+
+            services.AddTransient<IWeatherClient, ApixuWeatherClient>();
+            services.AddTransient<IWeatherProvider, TempestasWeatherProvider>();
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            
+            services.AddSwaggerDocument();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,9 +54,28 @@ namespace Tempestas.WebApi
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            
+            app.UseOpenApi();
+            app.UseSwaggerUi3(options =>
+                {
+                    // Define web UI route
+                    options.Path = "/swagger";
+
+                    // Define OpenAPI/Swagger document route (defined with UseSwaggerWithApiExplorer)
+                    options.DocumentPath = "/swagger/v1/swagger.json";
+                }
+                );
+            
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvc(routes =>
+                        {
+                            routes.MapRoute(
+                                name: "default",
+                                template: "{controller}/{action=Index}/{id?}");
+                        });
         }
     }
 }

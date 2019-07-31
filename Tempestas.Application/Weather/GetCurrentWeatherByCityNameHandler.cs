@@ -3,19 +3,31 @@ namespace Tempestas.Application.Weather
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Interfaces;
     using MediatR;
 
-    public class GetCurrentWeatherByCityNameHandler : IRequestHandler<GetCurrentWeatherByCityName, CurrentWeatherInTownModel>
+    public class GetCurrentWeatherByCityNameHandler :
+        IRequestHandler<GetCurrentWeatherByCityName, CurrentWeatherInTownModel>
     {
-        public GetCurrentWeatherByCityNameHandler()
+        private IWeatherProvider _weatherProvider;
+
+        public GetCurrentWeatherByCityNameHandler(IWeatherProvider weatherProvider)
         {
-            
+            _weatherProvider = weatherProvider;
         }
 
-        public async Task<CurrentWeatherInTownModel> Handle(GetCurrentWeatherByCityName message,
+        public async Task<CurrentWeatherInTownModel> Handle(GetCurrentWeatherByCityName request,
             CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var response = await _weatherProvider
+                .GetWeatherAsync(new GetWeatherMsg {CityName = request.CityName}, cancellationToken);
+
+            if (response == null)
+            {
+                //todo handler unsuccessful results;
+            }
+
+            return response;
         }
     }
 }
