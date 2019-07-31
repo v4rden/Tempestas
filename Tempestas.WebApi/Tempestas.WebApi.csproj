@@ -10,10 +10,13 @@
         <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+        <PackageReference Include="NSwag.AspNetCore" Version="13.0.4" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Tempestas.Application\Tempestas.Application.csproj" />
+      <ProjectReference Include="..\Tempestas.Infrastructure\Tempestas.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
