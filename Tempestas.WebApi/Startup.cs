@@ -4,6 +4,7 @@
     using Application.Infrastructure;
     using Application.Interfaces;
     using Application.Weather;
+    using Common;
     using Infrastructure;
     using MediatR;
     using Microsoft.AspNetCore.Builder;
@@ -24,9 +25,11 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<ApiKeys>(Configuration.GetSection("ApiKeys"));
+            services.AddOptions();
             services.AddMediatR(typeof(GetCurrentWeatherByCityNameHandler).GetTypeInfo().Assembly);
 
-            services.AddTransient<IWeatherClient, ApixuWeatherClient>();
+            services.AddTransient<IWeatherClient, OpenWeatherMapClient>();
             services.AddTransient<IWeatherProvider, TempestasWeatherProvider>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
