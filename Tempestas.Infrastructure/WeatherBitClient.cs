@@ -28,13 +28,15 @@ namespace Tempestas.Infrastructure
             string temperature = smth.data[0].temp;
             string humidity = smth.data[0].rh;
 
-            return new CurrentWeatherInTownModel
+            var model = new CurrentWeatherInTownModel
             {
                 TownName = townName,
                 Temperature = decimal.Parse(temperature),
                 Pressure = decimal.Parse(pressure),
                 Humidity = decimal.Parse(humidity)
             };
+
+            return SignResult(model);
         }
     }
 }

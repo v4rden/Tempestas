@@ -28,13 +28,14 @@ namespace Tempestas.Infrastructure
             decimal pressure = smth.main.pressure;
             decimal humidity = smth.main.humidity;
 
-            return new CurrentWeatherInTownModel
+            var model = new CurrentWeatherInTownModel
             {
                 TownName = townName,
                 Temperature = temperature,
                 Pressure = pressure,
                 Humidity = humidity
             };
+            return SignResult(model);
         }
     }
 }

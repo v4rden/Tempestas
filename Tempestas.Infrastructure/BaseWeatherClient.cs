@@ -30,12 +30,19 @@ namespace Tempestas.Infrastructure
                     client.GetAsync(requestUrl,
                         cancellationToken).Result;
                 var data = response.Content.ReadAsStringAsync().Result;
-                return Convert(data);
+                var result = Convert(data);
+                return result;
             }
         }
 
         protected abstract string GetRequestUrl(string city);
 
         protected abstract Task<CurrentWeatherInTownModel> Convert(string json);
+
+        protected CurrentWeatherInTownModel SignResult(CurrentWeatherInTownModel model)
+        {
+            model.Origin = ApiUrl;
+            return model;
+        }
     }
 }
