@@ -3,8 +3,8 @@ namespace Tempestas.Application.Interfaces
     using System.Threading.Tasks;
     using Weather;
 
-    public interface IWeatherProvider
+    public interface IWeatherProvider : IWeatherClient
     {
-        Task GetWeatherAsync(GetWeatherMsg msg);
+        
     }
 }
