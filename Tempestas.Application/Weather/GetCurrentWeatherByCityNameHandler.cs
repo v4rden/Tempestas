@@ -1,6 +1,5 @@
 namespace Tempestas.Application.Weather
 {
-    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Interfaces;

@@ -11,7 +11,7 @@ namespace Tempestas.Infrastructure
     {
         public string ApiUrl { get; set; }
         public string ApiKey { get; set; }
-        
+
         public Task<CurrentWeatherInTownModel> GetWeatherAsync(GetWeatherMsg msg, CancellationToken cancellationToken)
         {
             using (var client = new HttpClient())

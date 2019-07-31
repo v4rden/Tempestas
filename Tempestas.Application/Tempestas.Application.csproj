@@ -5,11 +5,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="MediatR" Version="7.0.0" />
+        <PackageReference Include="MediatR" Version="7.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Tempestas.Domain\Tempestas.Domain.csproj" />
+        <ProjectReference Include="..\Tempestas.Domain\Tempestas.Domain.csproj" />
     </ItemGroup>
 
 </Project>

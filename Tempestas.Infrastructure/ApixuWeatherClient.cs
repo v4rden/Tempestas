@@ -1,9 +1,6 @@
 namespace Tempestas.Infrastructure
 {
-    using System;
-    using System.Threading;
     using System.Threading.Tasks;
-    using Application.Interfaces;
     using Application.Weather;
     using Newtonsoft.Json;
 
@@ -14,6 +11,7 @@ namespace Tempestas.Infrastructure
             ApiUrl = "http://api.apixu.com/v1/current.json?key=041be6d421854a20962234134193007&q=";
             ApiKey = "";
         }
+
         protected override async Task<CurrentWeatherInTownModel> Convert(string json)
         {
             dynamic smth = JsonConvert.DeserializeObject(json);

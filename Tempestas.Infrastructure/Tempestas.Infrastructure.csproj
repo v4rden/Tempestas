@@ -5,11 +5,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Tempestas.Application\Tempestas.Application.csproj" />
+        <ProjectReference Include="..\Tempestas.Application\Tempestas.Application.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     </ItemGroup>
 
 </Project>

@@ -11,7 +11,7 @@ namespace Tempestas.Infrastructure
             ApiUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
             ApiKey = "&appid=a98130182fe1762549fe72d3d4ca7d2a";
         }
-        
+
         protected override async Task<CurrentWeatherInTownModel> Convert(string json)
         {
             dynamic smth = JsonConvert.DeserializeObject(json);
@@ -19,14 +19,13 @@ namespace Tempestas.Infrastructure
             decimal temperature = smth.main.temp;
             decimal pressure = smth.main.pressure;
             decimal humidity = smth.main.humidity;
-            
+
             return new CurrentWeatherInTownModel
             {
                 TownName = townName,
                 Temperature = temperature,
                 Pressure = pressure,
                 Humidity = humidity
-                    
             };
         }
     }
