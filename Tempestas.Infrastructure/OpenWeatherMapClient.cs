@@ -2,14 +2,22 @@ namespace Tempestas.Infrastructure
 {
     using System.Threading.Tasks;
     using Application.Weather;
+    using Common;
+    using Microsoft.Extensions.Options;
     using Newtonsoft.Json;
 
     public class OpenWeatherMapClient : BaseWeatherClient
     {
-        public OpenWeatherMapClient()
+        public OpenWeatherMapClient(IOptions<ApiKeys> options) : base(options)
         {
-            ApiUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
-            ApiKey = "&appid=a98130182fe1762549fe72d3d4ca7d2a";
+            ApiUrl = "http://api.openweathermap.org";
+        }
+
+        protected override string ApiKey => Options.Value.OpenWeather;
+
+        protected override string GetRequestUrl(string city)
+        {
+            return $"{ApiUrl}/data/2.5/weather?q={city}&{ApiKey}";
         }
 
         protected override async Task<CurrentWeatherInTownModel> Convert(string json)

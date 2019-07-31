@@ -2,14 +2,22 @@ namespace Tempestas.Infrastructure
 {
     using System.Threading.Tasks;
     using Application.Weather;
+    using Common;
+    using Microsoft.Extensions.Options;
     using Newtonsoft.Json;
 
     public class WeatherBitClient : BaseWeatherClient
     {
-        public WeatherBitClient()
+        public WeatherBitClient(IOptions<ApiKeys> options) : base(options)
         {
-            ApiUrl = "https://api.weatherbit.io/v2.0/current?city=";
-            ApiKey = "&key=f3b62333fc5b48b78c6f48b1e5d85d7a";
+            ApiUrl = "https://api.weatherbit.io";
+        }
+
+        protected override string ApiKey => Options.Value.WeatherBit;
+
+        protected override string GetRequestUrl(string city)
+        {
+            return $"{ApiUrl}/v2.0/current?city={city}&{ApiKey}";
         }
 
         protected override async Task<CurrentWeatherInTownModel> Convert(string json)

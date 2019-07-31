@@ -2,14 +2,22 @@ namespace Tempestas.Infrastructure
 {
     using System.Threading.Tasks;
     using Application.Weather;
+    using Common;
+    using Microsoft.Extensions.Options;
     using Newtonsoft.Json;
 
     public class ApixuWeatherClient : BaseWeatherClient
     {
-        public ApixuWeatherClient()
+        public ApixuWeatherClient(IOptions<ApiKeys> options) : base(options)
         {
-            ApiUrl = "http://api.apixu.com/v1/current.json?key=041be6d421854a20962234134193007&q=";
-            ApiKey = "";
+            ApiUrl = "http://api.apixu.com";
+        }
+
+        protected override string ApiKey => Options.Value.Apixu;
+
+        protected override string GetRequestUrl(string city)
+        {
+            return $"{ApiUrl}/v1/current.json?{ApiKey}&q={city}";
         }
 
         protected override async Task<CurrentWeatherInTownModel> Convert(string json)
