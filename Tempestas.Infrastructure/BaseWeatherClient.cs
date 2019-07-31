@@ -5,7 +5,6 @@ namespace Tempestas.Infrastructure
     using System.Threading.Tasks;
     using Application.Interfaces;
     using Application.Weather;
-    using Common;
     using Microsoft.Extensions.Options;
 
     public abstract class BaseWeatherClient : IWeatherClient

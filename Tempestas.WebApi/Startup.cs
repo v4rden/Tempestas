@@ -4,7 +4,6 @@
     using Application.Infrastructure;
     using Application.Interfaces;
     using Application.Weather;
-    using Common;
     using Infrastructure;
     using MediatR;
     using Microsoft.AspNetCore.Builder;

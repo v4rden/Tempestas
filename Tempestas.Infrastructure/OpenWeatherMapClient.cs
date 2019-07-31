@@ -2,7 +2,6 @@ namespace Tempestas.Infrastructure
 {
     using System.Threading.Tasks;
     using Application.Weather;
-    using Common;
     using Microsoft.Extensions.Options;
     using Newtonsoft.Json;
 

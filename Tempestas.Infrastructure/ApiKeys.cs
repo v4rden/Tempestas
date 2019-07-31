@@ -1,4 +1,4 @@
-namespace Tempestas.Common
+namespace Tempestas.Infrastructure
 {
     public class ApiKeys
     {
