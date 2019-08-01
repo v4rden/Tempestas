@@ -57,7 +57,7 @@ namespace Tempestas.WebApi.FunctionalTests.Controllers.Weather
             Assert.True(!string.IsNullOrEmpty(origin));
         }
 
-        [Fact(Skip = "Subsequent request are cached. So at this point elapsed time is 0")]
+        [Fact]
         public void GivenValidCityName_ReturnsModelWithElapsedTime()
         {
             //Act

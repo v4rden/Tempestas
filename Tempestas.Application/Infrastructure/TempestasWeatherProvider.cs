@@ -31,8 +31,8 @@ namespace Tempestas.Application.Infrastructure
             var result = await Task.WhenAny(work).Result;
             _timer.Stop();
 
-            result.ElapsedTime = _timer.ElapsedMilliseconds;
-            Log.Information($"Response from {result.Origin} was acquired in {_timer.ElapsedMilliseconds}ms");
+            result.ElapsedTime = _timer.ElapsedTicks;
+            Log.Information($"Response from {result.Origin} was acquired in {_timer.ElapsedTicks} ticks");
 
             return result;
         }
