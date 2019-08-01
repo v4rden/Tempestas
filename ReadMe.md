@@ -30,5 +30,4 @@ Follow these steps to get your development environment set up:
 * ASP.NET Core 2.2
 * [Serilog](https://serilog.net/)
 * [MediatR](https://github.com/jbogard/MediatR/wiki)
-Library leverages mediator pattern for solving the problem of decoupling the sending of messages from handling messages. In this solution mainly controls CQRS logic.
 * [Nswager](https://github.com/RicoSuter/NSwag/wiki)     
