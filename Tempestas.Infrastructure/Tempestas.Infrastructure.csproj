@@ -6,7 +6,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Tempestas.Application\Tempestas.Application.csproj" />
-        <ProjectReference Include="..\Tempestas.Common\Tempestas.Common.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
